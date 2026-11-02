@@ -1,3 +1,4 @@
+
 # CuraFlow — Frontend
 
 **A caregiver workspace for tracking a patient's medications, vitals, physiotherapy and daily wellness — with AI-generated recovery summaries that show their evidence.**
@@ -39,6 +40,13 @@ Caregiving at home means juggling five kinds of information — medications, vit
 | | Weekly summary | An itemised 7-day view across logs, vitals, physiotherapy and reports |
 
 Choosing a patient from the dashboard or the patient list opens their **Daily log** directly — logging care is the most time-pressured task, so it's one click away.
+
+---
+
+## Project presentation and demo
+
+- **Project Presentation:** [CuraFlow.pptx](./CuraFlow.pptx)
+- **Demo Video:** [Watch CuraFlow Demo](https://drive.google.com/file/d/1j4HzDnw-K_-BHutGDpxzT479BQ5q4bFl/view)
 
 ---
 
@@ -88,7 +96,7 @@ Other scripts: `npm run build` (production build to `dist/`), `npm run preview` 
 
 ### Signing in
 
-Use a caregiver account from the backend. If you ran the backend's seed script, the seeded caregivers use the password `Caregiver@123`.
+Use a caregiver account from the backend.
 
 ### Configuration
 
@@ -125,39 +133,40 @@ If you'd rather call a backend directly (`VITE_API_BASE_URL` or the login-screen
 
 ## Project structure
 
-```
+```text
 CuraFlow-Frontend/
-├── index.html                 Vite entry
-├── vite.config.js             Dev server, /api proxy, test config
+├── CuraFlow.pptx               Project presentation
+├── index.html                  Vite entry
+├── vite.config.js              Dev server, /api proxy, test config
 ├── package.json
-├── Dockerfile                 Multi-stage: install → build → nginx
-├── docker-compose.yml         `web` (nginx) and `dev` (Vite, hot reload) services
+├── Dockerfile                  Multi-stage: install → build → nginx
+├── docker-compose.yml          `web` (nginx) and `dev` (Vite, hot reload) services
 ├── docker/
-│   ├── default.conf           nginx: static files, SPA fallback, /api proxy
-│   ├── 15-backend-proxy.sh    Turns BACKEND_ORIGIN into proxy settings at container start
+│   ├── default.conf             nginx: static files, SPA fallback, /api proxy
+│   ├── 15-backend-proxy.sh      Turns BACKEND_ORIGIN into proxy settings at container start
 │   └── security-headers.conf
-├── public/                    Static files (favicon)
+├── public/                      Static files (favicon)
 └── src/
-    ├── main.jsx               Entry point
-    ├── App.jsx                Providers + router
-    ├── config.js              API base URL
-    ├── routes/                Route table (page titles live here) + auth guard
-    ├── pages/                 One component per screen
+    ├── main.jsx                 Entry point
+    ├── App.jsx                  Providers + router
+    ├── config.js                API base URL
+    ├── routes/                  Route table (page titles live here) + auth guard
+    ├── pages/                   One component per screen
     ├── components/
-    │   ├── layout/            App shell: sidebar, topbar
-    │   ├── common/            Modal, Segmented, Toggle, Stepper, Field, …
-    │   ├── charts/            LineChart, BarChart (SVG)
-    │   ├── dailylog/          The daily-log form, split into its sections
+    │   ├── layout/              App shell: sidebar, topbar
+    │   ├── common/              Modal, Segmented, Toggle, Stepper, Field, …
+    │   ├── charts/              LineChart, BarChart (SVG)
+    │   ├── dailylog/            The daily-log form, split into its sections
     │   ├── patients/ prescriptions/ reports/ summary/
     ├── api/
-    │   ├── client.js          fetch wrapper: auth header, token refresh, friendly errors
-    │   └── endpoints.js       Every backend call, grouped by resource
-    ├── context/               Toast, Auth, Patients
-    ├── hooks/                 useAsync (data loading), usePatient
-    ├── utils/                 Formatting, date ranges, summary parsing
-    ├── styles/                base.css (tokens, layout) + components.css
-    ├── test/                  Mock backend + render helper
-    └── __tests__/             Test suites
+    │   ├── client.js            fetch wrapper: auth header, token refresh, friendly errors
+    │   └── endpoints.js         Every backend call, grouped by resource
+    ├── context/                 Toast, Auth, Patients
+    ├── hooks/                   useAsync (data loading), usePatient
+    ├── utils/                   Formatting, date ranges, summary parsing
+    ├── styles/                  base.css (tokens, layout) + components.css
+    ├── test/                    Mock backend + render helper
+    └── __tests__/               Test suites
 ```
 
 ### Architecture notes
